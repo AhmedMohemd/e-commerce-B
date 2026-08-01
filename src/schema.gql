@@ -1,0 +1,95 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type OneUserResponse {
+  _id: ID!
+  DOB: String
+  createdAt: String!
+  updatedAt: String
+  changeCredentialsTime: String
+  deletedAt: String
+  confirmEmail: String
+  restoredAt: String
+  phone: String
+  email: String!
+  firstName: String!
+  lastName: String!
+  username: String!
+  password: String
+  profilePicture: String
+  profileCoverPictures: [String!]
+  gender: GenderEnum!
+  provider: ProviderEnum!
+  role: RoleEnum!
+  lang: LanguageEnum!
+}
+
+enum GenderEnum {
+  MALE
+  FEMALE
+}
+
+enum ProviderEnum {
+  SYSTEM
+  GOOGLE
+}
+
+enum RoleEnum {
+  USER
+  ADMIN
+}
+
+enum LanguageEnum {
+  AR
+  EN
+}
+
+type SayHiResponse {
+  message: String!
+  age: Int
+}
+
+type OneProductResponse {
+  _id: ID!
+  brandId: ID!
+  categoryId: ID!
+  createdBy: OneUserResponse!
+  updatedBy: ID
+  notifyUsers: [ID!]
+  originalPrice: Float!
+  discountPercent: Float!
+  salePrice: Float!
+  finalPrice: Float!
+  stock: Int!
+  rating: Int
+  createdAt: String!
+  updatedAt: String
+  deletedAt: String
+  restoredAt: String
+  description: String!
+  name: String!
+  slug: String!
+  productId: String!
+  gallery: [String!]
+  image: String!
+}
+
+type PaginateProductsResponse {
+  docs: [OneProductResponse!]!
+  currentPage: Int
+  pages: Int
+  size: Int
+}
+
+type Query {
+  allProducts(page: Int, size: Int, search: String): PaginateProductsResponse!
+
+  """FIRST API"""
+  sayHi(name: String, age: Int): [SayHiResponse!]!
+}
+
+type Mutation {
+  """FIRST API"""
+  lol: [SayHiResponse!]!
+}
